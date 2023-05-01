@@ -198,6 +198,8 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+puts #MOVIE OUTPUT
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
@@ -206,3 +208,5 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+puts #cast data
