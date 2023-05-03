@@ -86,15 +86,17 @@ Role.destroy_all
 # TODO!
 
 #Studios
-warner_bros = Studio.find_by({"name" => "Warner Bros."})
+warner_bros = Studio.new
+warner_bros["name"] = "Warner Bros."
+warner_bros.save
 
 #Movies
-movie = Movie.new
-movie["title"] = "Batman Begins"
-movie["year_released"] = 2005
-movie["rated"] = "PG-13"
-movie["studio"] = warner_bros
-movie.save
+batman_begins = Movie.new
+batman_begins["title"] = "Batman Begins"
+batman_begins["year_released"] = 2005
+batman_begins["rated"] = "PG-13"
+batman_begins["studio"] = warner_bros
+batman_begins.save
 
 the_dark_knight = Movie.new
 the_dark_knight["title"] = "The Dark Knight"
@@ -156,94 +158,106 @@ anne_hathaway["name"] = "Anne Hathaway"
 anne_hathaway.save
 
 #Roles
-Role.create(
-  movie: batman_begins,
-  actor: christian_bale,
-  character_name: "Bruce Wayne"
-)
-Role.create(
-  movie: batman_begins,
-  actor: michael_caine,
-  character_name: "Alfred"
-)
-Role.create(
-  movie: batman_begins,
-  actor: liam_neeson,
-  character_name: "Ra's Al Ghul"
-)
-Role.create(
-  movie: batman_begins,
-  actor: katie_holmes,
-  character_name: "Rachel Dawes"
-)
-Role.create(
-  movie: batman_begins,
-  actor: gary_oldman,
-  character_name: "Commissioner Gordon"
-)
-Role.create(
-  movie: the_dark_knight,
-  actor: christian_bale,
-  character_name: "Bruce Wayne"
-)
-Role.create(
-  movie: the_dark_knight,
-  actor: heath_ledger,
-  character_name: "Joker"
-)
-Role.create(
-  movie: the_dark_knight,
-  actor: aaron_eckhart,
-  character_name: "Harvey Dent"
-)
-Role.create(
-  movie: the_dark_knight,
-  actor: michael_caine,
-  character_name: "Alfred"
-)
-Role.create(
-  movie: the_dark_knight,
-  actor: maggie_gyllenhaal,
-  character_name: "Rachel Dawes"
-)
-Role.create(
-  movie: the_dark_knight_rises,
-  actor: christian_bale,
-  character_name: "Bruce Wayne"
-)
-Role.create(
-  movie: the_dark_knight_rises,
-  actor: gary_oldman,
-  character_name: "Commissioner Gordon"
-)
-Role.create(
-  movie: the_dark_knight_rises,
-  actor: tom_hardy,
-  character_name: "Bane"
-)
+Role.create([
+  {
+    movie: batman_begins,
+    actor: christian_bale,
+    character_name: "Bruce Wayne"
+  },
+  {
+    movie: batman_begins,
+    actor: michael_caine,
+    character_name: "Alfred"
+  },
+  {
+    movie: batman_begins,
+    actor: liam_neeson,
+    character_name: "Ra's Al Ghul"
+  },
+  {
+    movie: batman_begins,
+    actor: katie_holmes,
+    character_name: "Rachel Dawes"
+  },
+  {
+    movie: batman_begins,
+    actor: gary_oldman,
+    character_name: "Commissioner Gordon"
+  },
+  {
+    movie: the_dark_knight,
+    actor: christian_bale,
+    character_name: "Bruce Wayne"
+  },
+  {
+    movie: the_dark_knight,
+    actor: heath_ledger,
+    character_name: "Joker"
+  },
+  {
+    movie: the_dark_knight,
+    actor: aaron_eckhart,
+    character_name: "Harvey Dent"
+  },
+  {
+    movie: the_dark_knight,
+    actor: michael_caine,
+    character_name: "Alfred"
+  },
+  {
+    movie: the_dark_knight,
+    actor: maggie_gyllenhaal,
+    character_name: "Rachel Dawes"
+  },
+  {
+    movie: the_dark_knight_rises,
+    actor: christian_bale,
+    character_name: "Bruce Wayne"
+  },
+  {
+    movie: the_dark_knight_rises,
+    actor: gary_oldman,
+    character_name: "Commissioner Gordon"
+  },
+  {
+    movie: the_dark_knight_rises,
+    actor: tom_hardy,
+    character_name: "Bane"
+  }
+])
 
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
-Movie.all.each do |movie|
-  puts "#{movie.title}\t#{movie.year_released}\t#{movie.rated}\t#{movie.studio.name}"
-end
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-puts #MOVIE OUTPUT
+movies = Movie.all
+for movie in movies
+  title = movie["title"]
+  year_released = movie["year_released"]
+  rated = movie["rated"]
+  studio = movie["studio"]
+
+  puts "#{title} #{year_released} #{rated} #{studio}"
+end 
 
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
-Movie.all.each do |movie|
-  puts "#{movie.title}\t#{movie.roles.first.actor.name}\t#{movie.roles.first.character_name}"
-  puts movie.roles[1..-1].map{|role| "\t\t#{role.actor.name}\t#{role.character_name}"}
-end
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+roles = Role.all
+for role in roles
+  title = movie["title"]
+  name = actor["name"]
+  character_name = role["character_name"]
+
+  puts "#{title} #{name} #{character_name}"
+end 
 
 
