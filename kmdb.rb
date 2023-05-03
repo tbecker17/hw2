@@ -111,17 +111,49 @@ the_dark_knight_rises["studio"] = warner_bros
 the_dark_knight_rises.save
 
 #Actors
-christian_bale = Actor.create(name: "Christian Bale")
-michael_caine = Actor.create(name: "Michael Caine")
-liam_neeson = Actor.create(name: "Liam Neeson")
-katie_holmes = Actor.create(name: "Katie Holmes")
-gary_oldman = Actor.create(name: "Gary Oldman")
-heath_ledger = Actor.create(name: "Heath Ledger")
-aaron_eckhart = Actor.create(name: "Aaron Eckhart")
-maggie_gyllenhaal = Actor.create(name: "Maggie Gyllenhaal")
-tom_hardy = Actor.create(name: "Tom Hardy")
-joseph_gordon_levitt = Actor.create(name: "Joseph Gordon-Levitt")
-anne_hathaway = Actor.create(name: "Anne Hathaway")
+christian_bale = Actor.new
+christian_bale["name"] = "Christian Bale"
+christian_bale.save
+
+michael_caine = Actor.new
+michael_caine["name"] = "Michael Caine"
+michael_caine.save
+
+liam_neeson = Actor.new
+liam_neeson["name"] = "Liam Neeson"
+liam_neeson.save
+
+katie_holmes = Actor.new
+katie_holmes["name"] = "Katie Holmes"
+katie_holmes.save
+
+gary_oldman = Actor.new
+gary_oldman["name"] = "Gary Oldman"
+gary_oldman.save
+
+heath_ledger = Actor.new
+heath_ledger["name"] = "Heath Ledger"
+heath_ledger.save
+
+aaron_eckhart = Actor.new
+aaron_eckhart["name"] = "Aaron Eckhart"
+aaron_eckhart.save
+
+maggie_gyllenhaal = Actor.new
+maggie_gyllenhaal["name"] = "Maggie Gyllenhaal"
+maggie_gyllenhaal.save
+
+tom_hardy = Actor.new
+tom_hardy["name"] = "Tom Hardy"
+tom_hardy.save
+
+joseph_gordon_levitt = Actor.new
+joseph_gordon_levitt["name"] = "Joseph Gordon-Levitt"
+joseph_gordon_levitt.save
+
+anne_hathaway = Actor.new
+anne_hathaway["name"] = "Anne Hathaway"
+anne_hathaway.save
 
 #Roles
 Role.create(
