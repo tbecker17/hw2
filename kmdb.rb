@@ -86,29 +86,29 @@ Role.destroy_all
 # TODO!
 
 #Studios
-warner_bros = Studio.create(name: "Warner Bros.")
+warner_bros = Studio.find_by({"name" => "Warner Bros."})
 
 #Movies
-batman_begins = Movie.create(
-  title: "Batman Begins",
-  year_released: 2005,
-  rated: "PG-13",
-  studio: warner_bros
-)
+movie = Movie.new
+movie["title"] = "Batman Begins"
+movie["year_released"] = 2005
+movie["rated"] = "PG-13"
+movie["studio"] = warner_bros
+movie.save
 
-the_dark_knight = Movie.create(
-  title: "The Dark Knight",
-  year_released: 2008,
-  rated: "PG-13",
-  studio: warner_bros
-)
+the_dark_knight = Movie.new
+the_dark_knight["title"] = "The Dark Knight"
+the_dark_knight["year_released"] = 2008
+the_dark_knight["rated"] = "PG-13"
+the_dark_knight["studio"] = warner_bros
+the_dark_knight.save
 
-the_dark_knight_rises = Movie.create(
-  title: "The Dark Knight Rises",
-  year_released: 2012,
-  rated: "PG-13",
-  studio: warner_bros
-)
+the_dark_knight_rises = Movie.new
+the_dark_knight_rises["title"] = "The Dark Knight Rises"
+the_dark_knight_rises["year_released"] = 2012
+the_dark_knight_rises["rated"] = "PG-13"
+the_dark_knight_rises["studio"] = warner_bros
+the_dark_knight_rises.save
 
 #Actors
 christian_bale = Actor.create(name: "Christian Bale")
@@ -193,7 +193,9 @@ Role.create(
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
-puts ""
+Movie.all.each do |movie|
+  puts "#{movie.title}\t#{movie.year_released}\t#{movie.rated}\t#{movie.studio.name}"
+end
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
@@ -204,9 +206,12 @@ puts #MOVIE OUTPUT
 puts ""
 puts "Top Cast"
 puts "========"
-puts ""
+Movie.all.each do |movie|
+  puts "#{movie.title}\t#{movie.roles.first.actor.name}\t#{movie.roles.first.character_name}"
+  puts movie.roles[1..-1].map{|role| "\t\t#{role.actor.name}\t#{role.character_name}"}
+end
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-puts #cast data
+
