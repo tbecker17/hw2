@@ -95,21 +95,21 @@ batman_begins = Movie.new
 batman_begins["title"] = "Batman Begins"
 batman_begins["year_released"] = 2005
 batman_begins["rated"] = "PG-13"
-batman_begins["studio"] = warner_bros
+batman_begins["studio"] = "Warner Bros."
 batman_begins.save
 
 the_dark_knight = Movie.new
 the_dark_knight["title"] = "The Dark Knight"
 the_dark_knight["year_released"] = 2008
 the_dark_knight["rated"] = "PG-13"
-the_dark_knight["studio"] = warner_bros
+the_dark_knight["studio"] = "Warner Bros."
 the_dark_knight.save
 
 the_dark_knight_rises = Movie.new
 the_dark_knight_rises["title"] = "The Dark Knight Rises"
 the_dark_knight_rises["year_released"] = 2012
 the_dark_knight_rises["rated"] = "PG-13"
-the_dark_knight_rises["studio"] = warner_bros
+the_dark_knight_rises["studio"] = "Warner Bros."
 the_dark_knight_rises.save
 
 #Actors
@@ -225,7 +225,6 @@ Role.create([
     character_name: "Bane"
   }
 ])
-
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
@@ -238,7 +237,7 @@ for movie in movies
   title = movie["title"]
   year_released = movie["year_released"]
   rated = movie["rated"]
-  studio = movie["studio"]
+  studio = movie.studio.name
 
   puts "#{title} #{year_released} #{rated} #{studio}"
 end 
@@ -253,8 +252,8 @@ puts "========"
 
 roles = Role.all
 for role in roles
-  title = movie["title"]
-  name = actor["name"]
+  title = Movie.find_by(title: role["movie"]).title
+  actor = Actor.find_by(name: role["actor"])
   character_name = role["character_name"]
 
   puts "#{title} #{name} #{character_name}"
